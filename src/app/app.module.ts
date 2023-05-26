@@ -8,6 +8,11 @@ import { ToolbarComponent } from './parts/toolbar/toolbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import { MainComponent } from './pages/main/main.component';
 import { CreateOrderComponent } from './components/create-order/create-order.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,12 +21,17 @@ import { CreateOrderComponent } from './components/create-order/create-order.com
     MainComponent,
     CreateOrderComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

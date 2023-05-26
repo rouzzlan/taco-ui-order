@@ -1,1 +1,79 @@
-<p>create-order works!</p>
+<form [formGroup]="orderFormGroup" (ngSubmit)="onSubmit()">
+  <mat-card class="form-card">
+    <mat-card-title>
+      Create Order
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Order Name</mat-label>
+          <input matInput [formControl]="nameFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Your email</mat-label>
+          <input matInput [formControl]="emailFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Delivery street</mat-label>
+          <input matInput [formControl]="streetFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Delivery city</mat-label>
+          <input matInput [formControl]="cityFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Delivery state</mat-label>
+          <input matInput [formControl]="stateFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Delivery zip</mat-label>
+          <input matInput [formControl]="zipFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Delivery country</mat-label>
+          <input matInput [formControl]="countryFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Credit card owner</mat-label>
+          <input matInput [formControl]="ownerFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Credit card number</mat-label>
+          <input matInput [formControl]="numberFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Credit card CVV</mat-label>
+          <input matInput [formControl]="cvvFC">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="mat-field-full-width">
+          <mat-label>Credit card expiration</mat-label>
+          <input matInput [formControl]="expirationFC">
+        </mat-form-field>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" type="submit" [disabled]="orderFormGroup.invalid">Create</button>
+      <button mat-button color="accent" type="reset">Reset</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
