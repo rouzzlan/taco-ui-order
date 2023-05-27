@@ -19,3 +19,8 @@ export class Address {
   public zip: string | undefined;
   public country: string | undefined;
 }
+
+export class OrderSummary{
+  public uuid: string | undefined;
+  public name: string | undefined;
+}
