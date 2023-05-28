@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Address, CCard, Order} from "../../model/Order";
+import * as cardValidator from "card-validator";
 
 @Component({
   selector: 'app-create-order',
@@ -9,19 +10,19 @@ import {Address, CCard, Order} from "../../model/Order";
 })
 export class CreateOrderComponent {
   // order
-  nameFC: FormControl = new FormControl(null, Validators.required);
-  emailFC: FormControl = new FormControl(null, Validators.required);
+  nameFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9\\s]{3,25}$')]);
+  emailFC: FormControl = new FormControl(null, [Validators.required, Validators.email]);
   // CC
-  numberFC: FormControl = new FormControl(null, Validators.required);
-  expirationFC: FormControl = new FormControl(null, Validators.required);
-  cvvFC: FormControl = new FormControl(null, Validators.required);
-  ownerFC: FormControl = new FormControl(null, Validators.required);
+  numberFC: FormControl = new FormControl(null, [Validators.required, this.validateCard]);
+  expirationFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$')]);
+  cvvFC: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]);
+  ownerFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}\'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)'), Validators.maxLength(30), Validators.minLength(4)]);
   // Address
-  streetFC: FormControl = new FormControl(null, Validators.required);
-  cityFC: FormControl = new FormControl(null, Validators.required);
-  stateFC: FormControl = new FormControl(null, Validators.required);
-  zipFC: FormControl = new FormControl(null, Validators.required);
-  countryFC: FormControl = new FormControl(null, Validators.required);
+  streetFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9\\s]*$')]);
+  cityFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
+  stateFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
+  zipFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]);
+  countryFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
 
   orderFormGroup: FormGroup = new FormGroup(
     {
@@ -70,5 +71,13 @@ export class CreateOrderComponent {
     order.email = this.emailFC.value;
     order.name = this.nameFC.value;
     return order;
+  }
+
+  private   validateCard(control: AbstractControl): { [key: string]: boolean } | null {
+    const numberValidation = cardValidator.number(control.value);
+    if (!numberValidation.isValid) {
+      return {'invalidCard': true}
+    }
+    return null;
   }
 }
