@@ -18,11 +18,11 @@ export class CreateOrderComponent {
   cvvFC: FormControl = new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]);
   ownerFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}\'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)'), Validators.maxLength(30), Validators.minLength(4)]);
   // Address
-  streetFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9\\s]*$')]);
-  cityFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
-  stateFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
-  zipFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]);
-  countryFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]*$')]);
+  streetFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9\\s]{3,35}$')]);
+  cityFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]{3,25}$')]);
+  stateFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]{3,25}$')]);
+  zipFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]{3,15}$')]);
+  countryFC: FormControl = new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]{3,25}$')]);
 
   orderFormGroup: FormGroup = new FormGroup(
     {
