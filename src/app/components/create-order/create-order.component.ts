@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Address, CCard, Order} from "../../model/Order";
 
 @Component({
   selector: 'app-create-order',
@@ -38,5 +39,36 @@ export class CreateOrderComponent {
     }
   )
 
-  onSubmit(){}
+  onSubmit(): void{
+    let order = this.getFormOrder();
+    order.address = this.getFormOrderAddress();
+    order.cCard = this.getFormOrderCC();
+    console.log(order);
+  }
+
+  private getFormOrderCC(): CCard {
+    let cc : CCard = new CCard();
+    cc.owner = this.ownerFC.value;
+    cc.number = this.numberFC.value;
+    cc.expiration = this.expirationFC.value;
+    cc.cvv = this.cvvFC.value;
+    return cc;
+  }
+
+  private getFormOrderAddress(): Address {
+    let addr: Address = new Address();
+    addr.street = this.streetFC.value;
+    addr.city = this.cityFC.value;
+    addr.zip = this.zipFC.value;
+    addr.state = this.stateFC.value;
+    addr.country = this.countryFC.value;
+    return addr;
+  }
+
+  private getFormOrder(): Order {
+    let order: Order = new Order();
+    order.email = this.emailFC.value;
+    order.name = this.nameFC.value;
+    return order;
+  }
 }
