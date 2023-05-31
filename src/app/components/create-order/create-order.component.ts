@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Address, CCard, Order} from "../../model/Order";
+import {Address, CCard, Order, OrderSummary} from "../../model/Order";
 import * as cardValidator from "card-validator";
 import {OrderService} from "../../services/order.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-order',
@@ -41,7 +42,7 @@ export class CreateOrderComponent {
     }
   )
 
-  constructor(private service: OrderService) {
+  constructor(private service: OrderService, private router: Router) {
   }
 
   onSubmit(): void{
@@ -49,7 +50,7 @@ export class CreateOrderComponent {
     order.address = this.getFormOrderAddress();
     order.cCard = this.getFormOrderCC();
     this.service.submitOrder(order).subscribe(summary => {
-      console.log(summary);
+      this.navigate(summary);
     })
   }
 
@@ -79,11 +80,16 @@ export class CreateOrderComponent {
     return order;
   }
 
-  private   validateCard(control: AbstractControl): { [key: string]: boolean } | null {
+  private validateCard(control: AbstractControl): { [key: string]: boolean } | null {
     const numberValidation = cardValidator.number(control.value);
     if (!numberValidation.isValid) {
       return {'invalidCard': true}
     }
     return null;
+  }
+
+  private navigate(summary: OrderSummary) {
+    this.router.navigateByUrl('/order-submitted', {state: summary}).then(r => {
+    })
   }
 }

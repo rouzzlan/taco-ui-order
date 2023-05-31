@@ -15,13 +15,19 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {HttpClientModule} from "@angular/common/http";
+import { OrderSubmittedComponent } from './components/order-submitted/order-submitted.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     MainComponent,
-    CreateOrderComponent
+    CreateOrderComponent,
+    OrderSubmittedComponent,
+    OrderListComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

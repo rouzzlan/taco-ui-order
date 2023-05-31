@@ -12,6 +12,6 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   submitOrder(newOrder: Order): Observable<OrderSummary> {
-    return this.http.post<OrderSummary>(`${environment.server_url}:${environment.server_port}/order/`, newOrder);
+    return this.http.post<OrderSummary>(`${environment.submit_server_url}:${environment.submit_server_port}/order/`, newOrder);
   }
 }
