@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {OrderSummary} from "../../model/Order";
 
 @Component({
@@ -10,7 +10,7 @@ import {OrderSummary} from "../../model/Order";
 export class OrderSubmittedComponent{
   submitterOrder: OrderSummary;
 
-  constructor(private router:Router, private activatedRoute:ActivatedRoute) {
+  constructor(private router:Router) {
     this.submitterOrder = <OrderSummary>this.router.getCurrentNavigation()?.extras.state;
   }
 

@@ -1,3 +1,8 @@
-<p>The order has been submitted</p>
-<p>{{submitterOrder.name}}</p>
-<p>{{submitterOrder.uuid}}</p>
+<div class="welcome-content" role="main">
+  <mat-card>
+    <mat-card-content>
+      <p class="title">Order "{{submitterOrder.name}}" has been submitted.</p>
+      <p>Order reference: {{submitterOrder.uuid}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
