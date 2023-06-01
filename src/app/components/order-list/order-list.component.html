@@ -1,1 +1,17 @@
-<p>order-list works!</p>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+                       *ngFor="let order of orders | async">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{order.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <p>{{order.email}}</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Order ref:{{order.uuid}}</p>
+    <p>Order id:{{order.id}}</p>
+  </mat-expansion-panel>
+
+</mat-accordion>

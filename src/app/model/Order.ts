@@ -24,3 +24,12 @@ export class OrderSummary{
   public uuid: string | undefined;
   public name: string | undefined;
 }
+
+export class OrderListItem {
+  public id: string | undefined;
+  public uuid: string | undefined;
+  public name: string | undefined;
+  public email: string | undefined;
+  public ccardRef: string | undefined;
+  public addrRef: string | undefined;
+}

@@ -18,6 +18,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { OrderSubmittedComponent } from './components/order-submitted/order-submitted.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
